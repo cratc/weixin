@@ -2,8 +2,8 @@ name: weixin
 on:
   workflow_dispatch:
   schedule: 
-    # 代表国际标准时间4点0分，北京时间需要+8小时，代表北京时间中午12点运行
-    - cron: '30 5 * * *'
+    # 代表国际标准时间21点30分，北京时间需要+8小时，代表北京时间上午5点30分点运行
+    - cron: '30 05 * * *'
 jobs:
 #将工作流程中运行的所有作业组合在一起
   build:
@@ -23,21 +23,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip3 install -r requirements.txt
-      - name: time-push
+      - name: weixin
         run: |
           python3 main.py
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name:weixin
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
